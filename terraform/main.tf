@@ -1,5 +1,5 @@
-resource "aws_security_group" "web_sg" {
-  name        = "web-sg"
+resource "aws_security_group" "web_github" {
+  name        = "web-github"
   description = "Allow SSH and HTTP"
 
   ingress {
@@ -27,13 +27,13 @@ resource "aws_security_group" "web_sg" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "web_github" {
   ami           = "ami-0e86e20dae9224db8" # Ubuntu 22.04 LTS (us-east-1)
   instance_type = var.instance_type
   key_name      = "new-key"
-  security_groups = [aws_security_group.web_sg.name]
+  security_groups = [aws_security_group.web_github.name]
 
   tags = {
-    Name = "academy-web"
+    Name = "academy-web_github"
   }
 }
